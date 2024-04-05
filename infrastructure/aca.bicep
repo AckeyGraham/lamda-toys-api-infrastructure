@@ -1,9 +1,10 @@
 param location string
 param prefix string
-param vnetId  string
+param ControlPlaneSubnet string
+param acaAppSubnet string
 
-resource logAnalyticsWorkspace 'Microsoft.OperationalInsights/workspaces@2020-10-01' = {
-  name: '${prefix}-la-workspace'
+resource logAnalyticsWorkspace 'Microsoft.OperationalInsights/workspaces@2023-09-01' = {
+  name: '${prefix}-la-workspace001'
   location: location
   properties: {
     sku: {
@@ -12,7 +13,7 @@ resource logAnalyticsWorkspace 'Microsoft.OperationalInsights/workspaces@2020-10
   }
 }
 
-resource env 'Microsoft.Web/kubeEnvironments@2022-09-01' = {
+resource env 'Microsoft.Web/kubeEnvironments@2023-01-01' = {
   name:'${prefix}-container-env'
 location: location
 kind: 'containerenvironment'
@@ -27,8 +28,8 @@ properties:{
     }
   }
   containerAppsConfiguration:{
-    appSubnetResourceId: '${vnetId}/subnets/acaAppSubnet'
-    controlPlaneSubnetResourceId: '${vnetId}/subnets/acaControlPlaneSubnet'
+    appSubnetResourceId: ControlPlaneSubnet
+    controlPlaneSubnetResourceId: acaAppSubnet
   }
 }
 

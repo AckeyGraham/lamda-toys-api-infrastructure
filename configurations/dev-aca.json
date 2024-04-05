@@ -9,9 +9,13 @@
         "value": "lmbd-dev01"
       },
       
-        "vNetId": {
-          "value": "/subscriptions/d6955dab-7702-4b69-888a-13925755dfc6/resourceGroups/lambda-api-dev/providers/Microsoft.Network/virtualNetworks/lmbd-dev01-vnet"
-        }    
+        "ControlPlaneSubnet": {
+          "value": "subscriptions/d6955dab-7702-4b69-888a-13925755dfc6/resourceGroups/lambda-api-dev/providers/Microsoft.Network/virtualNetworks/lmbd-dev01-vnet/subnets/acaControlPlaneSubnet"
+        },
+
+        "acaAppSubnet": {
+          "value": "subscriptions/d6955dab-7702-4b69-888a-13925755dfc6/resourceGroups/lambda-api-dev/providers/Microsoft.Network/virtualNetworks/lmbd-dev01-vnet/subnets/acaAppSubnet"
+        }
 
     }
 }
